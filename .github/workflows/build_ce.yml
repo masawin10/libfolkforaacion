@@ -1,0 +1,40 @@
+name: Build for WindowsCE
+
+on:
+  push:
+    branches: "*"
+    tags: '*'
+  pull_request:
+    branches: "*"
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Install CeGCC
+      run: |
+        wget https://github.com/brain-hackers/cegcc-build/releases/download/2022-10-26-225811/cegcc-x86_64-2022-10-26-225811.zip -O cegcc.zip
+        unzip cegcc.zip -d /opt
+
+    - name: Build
+      run: |
+        export PATH=$PATH:/opt/cegcc/bin]
+        ./ce_build.sh
+
+    - name: Upload log
+      uses: actions/upload-artifact@v4
+      with:
+        name: libffi-8.dll
+        path: arm-unknown-mingw32ce/.libs/libffi-8.dll
+
+    - name: Upload zip file
+      uses: actions/upload-artifact@v4
+      with:
+        name: cpython-wince
+        path: wince_build
