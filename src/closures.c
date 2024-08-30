@@ -418,7 +418,9 @@ ffi_closure_free (void *ptr)
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#ifndef _WIN32_WCE
 #include <errno.h>
+#endif
 #ifndef _MSC_VER
 #include <unistd.h>
 #endif

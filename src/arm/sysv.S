@@ -94,7 +94,7 @@
 
 	.text
 	.syntax unified
-#if defined(_WIN32)
+#if defined(_WIN32) && !defined(_WIN32_WCE)
 	/* Windows on ARM is thumb-only */
 	.thumb
 #else
