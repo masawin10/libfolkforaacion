@@ -24,17 +24,12 @@ jobs:
 
     - name: Build
       run: |
-        export PATH=$PATH:/opt/cegcc/bin]
+        ./autogen.sh
+        export PATH=$PATH:/opt/cegcc/bin
         ./ce_build.sh
 
-    - name: Upload log
+    - name: Upload DLL
       uses: actions/upload-artifact@v4
       with:
         name: libffi-8.dll
         path: arm-unknown-mingw32ce/.libs/libffi-8.dll
-
-    - name: Upload zip file
-      uses: actions/upload-artifact@v4
-      with:
-        name: cpython-wince
-        path: wince_build
