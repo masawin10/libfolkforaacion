@@ -1,4 +1,4 @@
-name: Build for WindowsCE 2
+name: Build for WindowsCE 
 
 on:
   push:
