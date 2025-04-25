@@ -23,6 +23,7 @@ jobs:
         unzip cegcc.zip -d /opt
         sudo apt-get -y install libtool
         sudo apt -y install libltdl7-dev
+        sudo apt-get -y install libltdl-dev
 
     - name: Build
       run: |
